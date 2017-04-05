@@ -1,0 +1,18 @@
+{
+  "wifi": {
+    "enabled": 1,
+    "wifi_ssid": "",
+    "wifi_pass": "",
+    "wifi_ip": "",
+    "wifi_gw": "",
+    "wifi_subnet": "255.255.255.0"
+  },
+  "blynk": {
+    "enabled": 1,
+    "blynk_auth": ""
+  },
+  "ota": {
+    "update_ip": "",
+    "update_script": "/scripts/update.php"
+  }
+}

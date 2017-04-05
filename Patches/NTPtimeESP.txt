@@ -1,0 +1,4 @@
+Use library from https://github.com/stanzlavos/NTPtimeESP
+
+This is a fork of "https://github.com/SensorsIot/NTPtimeESP". Changes I have done is to make the "get time"
+call non-blocking.

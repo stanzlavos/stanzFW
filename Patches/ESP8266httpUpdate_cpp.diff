@@ -1,0 +1,41 @@
+*** D:\Apps\sloeber\arduinoPlugin\packages\esp8266\hardware\esp8266\2.3.0\libraries\ESP8266httpUpdate\src\ESP8266httpUpdate.cpp	2016-05-12 15:11:19.000000000 +05-30
+--- C:\Users\stanzlavos\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.3.0\libraries\ESP8266httpUpdate\src\ESP8266httpUpdate.cpp	2017-03-17 23:05:48.000000000 +05-30
+***************
+*** 70,81 ****
+--- 70,89 ----
+  {
+      HTTPClient http;
+      http.begin(url);
+      return handleUpdate(http, currentVersion, true);
+  }
+  
++ HTTPUpdateResult ESP8266HTTPUpdate::updateSpiffs(const String& host, uint16_t port, const String& uri,
++         const String& currentVersion)
++ {
++     HTTPClient http;
++     http.begin(host, port, uri);
++     return handleUpdate(http, currentVersion, true);
++ }
++ 
+  HTTPUpdateResult ESP8266HTTPUpdate::update(const String& host, uint16_t port, const String& uri, const String& currentVersion,
+          bool https, const String& httpsFingerprint, bool reboot)
+  {
+      rebootOnUpdate(reboot);
+      if (httpsFingerprint.length() == 0) {
+          return update(host, port, uri, currentVersion);
+***************
+*** 172,183 ****
+--- 180,192 ----
+      http.setTimeout(8000);
+      http.setUserAgent(F("ESP8266-http-Update"));
+      http.addHeader(F("x-ESP8266-STA-MAC"), WiFi.macAddress());
+      http.addHeader(F("x-ESP8266-AP-MAC"), WiFi.softAPmacAddress());
+      http.addHeader(F("x-ESP8266-free-space"), String(ESP.getFreeSketchSpace()));
+      http.addHeader(F("x-ESP8266-sketch-size"), String(ESP.getSketchSize()));
++     http.addHeader(F("x-ESP8266-sketch-md5"), String(ESP.getSketchMD5()));
+      http.addHeader(F("x-ESP8266-chip-size"), String(ESP.getFlashChipRealSize()));
+      http.addHeader(F("x-ESP8266-sdk-version"), ESP.getSdkVersion());
+  
+      if(spiffs) {
+          http.addHeader(F("x-ESP8266-mode"), F("spiffs"));
+      } else {

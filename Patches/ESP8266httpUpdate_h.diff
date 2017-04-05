@@ -1,0 +1,18 @@
+*** D:\Apps\sloeber\arduinoPlugin\packages\esp8266\hardware\esp8266\2.3.0\libraries\ESP8266httpUpdate\src\ESP8266httpUpdate.h	2016-05-12 15:11:19.000000000 +05-30
+--- C:\Users\stanzlavos\AppData\Local\Arduino15\packages\esp8266\hardware\esp8266\2.3.0\libraries\ESP8266httpUpdate\src\ESP8266httpUpdate.h	2017-03-15 17:24:11.000000000 +05-30
+***************
+*** 89,100 ****
+--- 89,101 ----
+  
+      // This function is deprecated, use rebootOnUpdate and the next one instead
+      t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion,
+                                       const String& httpsFingerprint, bool reboot) __attribute__((deprecated));
+      t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion = "");
+      t_httpUpdate_return updateSpiffs(const String& url, const String& currentVersion, const String& httpsFingerprint);
++     t_httpUpdate_return updateSpiffs(const String& host, uint16_t port, const String& uri, const String& currentVersion);
+  
+  
+      int getLastError(void);
+      String getLastErrorString(void);
+  
+  protected:
