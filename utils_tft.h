@@ -20,6 +20,8 @@
  
 #ifdef TFT_IN_USE
 
+#define _TFT_eSPI_
+
 #include "stdint.h"
 #include "Arduino.h"
 

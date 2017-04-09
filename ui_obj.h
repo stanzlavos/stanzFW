@@ -14,7 +14,7 @@
 #ifdef BMP_FROM_SPIFFS
 #include "FS.h"
 
-#define SPIFFS_DEF_READ_CNT 1024
+#define SPIFFS_DEF_READ_CNT 255
 #endif
 
 #define MAX_TEXT_SIZE       64
