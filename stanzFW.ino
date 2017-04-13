@@ -62,7 +62,7 @@ void setup() {
     T_PRINTLN(system_get_cpu_freq())
   }
 
-  T_PRINTLN("Ready.")
+  T_PRINTLN("Ready")
   blink_led(2);
 
 #ifdef TFT_IN_USE

@@ -8,8 +8,6 @@
 #include "ui_toolbar.h"
 #include "ui_defs.h"
 
-#define PAGE_ID_INVALID   UI_MAX_PAGES
-
 #define TOOLBAR_FLAG_HOME 0x01
 #define TOOLBAR_FLAG_BACK 0x02
 

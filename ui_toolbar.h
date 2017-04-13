@@ -8,8 +8,6 @@
 #include "ui_obj.h"
 #include "ui_defs.h"
 
-#define DEFAULT_TOOLBAR_BMP   "/toolbar.palette"
-
 class ui_toolbar : public ui_obj
 {
   public :

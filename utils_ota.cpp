@@ -103,9 +103,9 @@ void handle_http_update_loop(void)
 
 void handle_http_spiffs_update(void)
 {
-  PRINTLN("Checking SPIFFS update");
+  PRINTLN("Checking SPIFFS update")
 
-  t_httpUpdate_return retspiffs = ESPhttpUpdate.updateSpiffs(update_ip, 80, update_script, SKETCH_VERSION);
+  t_httpUpdate_return retspiffs = ESPhttpUpdate.updateSpiffs(update_ip, 80, update_script, SPIFFS_VERSION);
   
   switch (retspiffs) {
     case HTTP_UPDATE_FAILED:
@@ -127,7 +127,7 @@ void handle_http_spiffs_update(void)
 
 void handle_http_spiffs_update_loop(void)
 {
-	if (get_op_mode() == MODE_OTA)
+	if (get_op_mode() == MODE_SPIFFS_OTA)
 	{
 		handle_http_spiffs_update();
 

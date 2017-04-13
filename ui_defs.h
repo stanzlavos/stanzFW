@@ -2,6 +2,7 @@
 #define __UI_DEFS__
 
 #include "utils_tft.h"
+#include "ui_resources.h"
 
 #define STATUSBAR_X                	0
 #define STATUSBAR_Y                	0
@@ -67,27 +68,28 @@
 #define WORK_AREA_ARROW_DOWN_Y2     (WORK_AREA_ARROW_DOWN_Y0 - WORK_AREA_ARROW_WIDTH)  
 
 #define UI_MAX_PAGES                16
+#define PAGE_ID_INVALID   			UI_MAX_PAGES
 #define MAX_OBJ_PER_PAGE            (TOOLBAR_OBJ_MAX + WORK_AREA_OBJ_TOT)
+
+#define POPUP_X						WORK_AREA_FRAME_X
+#define POPUP_Y						WORK_AREA_FRAME_Y
+#define POPUP_H						WORK_AREA_FRAME_H
+#define POPUP_W						WORK_AREA_FRAME_W
+#define POPUP_R						WORK_AREA_FRAME_R
 
 typedef enum
 {
-  ID_HOME,
-  ID_SETTINGS
+	ID_HOME,
+	ID_SETTINGS
 } page_id_t;
 
 typedef enum
 {
-  ID_HOME_BUTTON = 1,
-  ID_BACK_BUTTON,
-  ID_USER_START,            // In each page, start objects IDs from this value !!!
+	ID_HOME_BUTTON = 1,
+	ID_BACK_BUTTON,
+	ID_POPUP_OK,
+	ID_POPUP_CANCEL,
+	ID_USER_START,            // In each page, start objects IDs from this value !!!
 }obj_id_t;
-
-#define HOME_UP_BMP         "/homeUP.palette"
-#define HOME_DOWN_BMP       "/homeDOWN.palette"
-#define BACK_UP_BMP         "/backUP.palette"
-#define BACK_DOWN_BMP       "/backDOWN.palette"
-
-#define STATUSBAR_WIFI_BMP	"/wifi.palette"
-#define STATUSBAR_BLYNK_BMP	"/blynk.palette"
 
 #endif // __UI_DEFS__

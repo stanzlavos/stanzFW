@@ -13,8 +13,8 @@
 #define DEBUG_PRINT
 //#define DEBUG_TELNET
 
-#define TFT_IN_USE      // Implicitley decides if touch is in use or not
-//#define TFT_SCROLL_ON   // Tesxt size 1 only !!!
+#define TFT_IN_USE      	// Implicitly decides if touch is in use or not
+//#define TFT_SCROLL_ON   	// Text size 1 only !!!
 
 #define NTP_IN_USE
 
