@@ -26,5 +26,5 @@
 * To generate spiffs image :
   
   - Add the folder path of mkspiffs to the "PATH" environment variable
-  - Open "cmd" and go to the firmware folder 							(where the folder "data" is present)
-  - Run : mkspiffs -c data -b 8192 -s 3125248 test_v1.1.spiffs.bin      (this is for 3MB SPIFFS; modify name of bin file as required)	  
+  - Open "cmd" and go to the firmware folder (where the folder "data" is present)
+  - Run : mkspiffs -c data -b 8192 -s 3125248 test_v1.1.spiffs.bin (this is for 3MB SPIFFS; modify name of bin file as required)	  
