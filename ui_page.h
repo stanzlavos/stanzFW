@@ -6,6 +6,7 @@
 #ifdef TFT_IN_USE
 
 #include "ui_toolbar.h"
+#include "ui_popup.h"
 #include "ui_defs.h"
 
 #define TOOLBAR_FLAG_HOME 0x01
@@ -49,6 +50,7 @@ class ui_page
     uint8_t           work_area_obj_cnt[WORK_AREA_PER_PAGE];
     uint8_t           active_work_area;
     uint8_t           free_work_area;
+    ui_popup		  *popup;
 
     // Constructor
     ui_page(uint8_t id = PAGE_ID_INVALID, char *name = NULL, uint8_t flags = 0)
@@ -65,6 +67,7 @@ class ui_page
       }
 
       active_obj        = NULL;
+      popup				= NULL;
       obj_cnt           = 0;
       handle_touch_fn   = default_touch_handler;
       work_area_type    = WORK_GRID;

@@ -71,11 +71,19 @@
 #define PAGE_ID_INVALID   			UI_MAX_PAGES
 #define MAX_OBJ_PER_PAGE            (TOOLBAR_OBJ_MAX + WORK_AREA_OBJ_TOT)
 
-#define POPUP_X						WORK_AREA_FRAME_X
-#define POPUP_Y						WORK_AREA_FRAME_Y
-#define POPUP_H						WORK_AREA_FRAME_H
-#define POPUP_W						WORK_AREA_FRAME_W
+#define POPUP_GAP					8
+#define POPUP_MSG_GAP				4
+#define POPUP_X						(WORK_AREA_FRAME_X + POPUP_GAP)
+#define POPUP_Y						(WORK_AREA_FRAME_Y + POPUP_GAP)
+#define POPUP_H						(WORK_AREA_FRAME_H - (2*POPUP_GAP))
+#define POPUP_W						(WORK_AREA_FRAME_W - (2*POPUP_GAP))
 #define POPUP_R						WORK_AREA_FRAME_R
+#define POPUP_OBJ_W					64
+#define POPUP_OBJ_H					48
+#define POPUP_OBJ_MAX				2
+#define POPUP_OBJ_GAP_1				((POPUP_W - POPUP_OBJ_W)/POPUP_OBJ_MAX)
+#define POPUP_OBJ_GAP_2				((POPUP_W - 2*POPUP_OBJ_W)/(POPUP_OBJ_MAX + 1))
+#define POPUP_OBJ_Y					((POPUP_Y + POPUP_H) - (POPUP_OBJ_H + POPUP_OBJ_GAP_2))
 
 typedef enum
 {

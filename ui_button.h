@@ -6,13 +6,12 @@
 #ifdef TFT_IN_USE
 
 #include "ui_obj.h"
-#include "ui_page.h"
 
 #define MAX_BUTTON_TOUCH_STATES MAX_BMPS
 
 class ui_button;
 
-typedef void (*on_touch_func_t)(ui_page *page, ui_button *button, touch_event_t event);
+typedef void (*on_touch_func_t)(ui_obj *active_obj, ui_button *button, touch_event_t event);
 
 class ui_button : public ui_obj
 {
@@ -35,7 +34,7 @@ class ui_button : public ui_obj
 
     bool set_on_touch_handler(event_type, on_touch_func_t);
     bool set_bmp(char *, event_type);
-    void on_touch(ui_page *page, ui_button *button, touch_event_t event);
+    void on_touch(ui_obj *active_obj, ui_button *button, touch_event_t event);
     void change_state(event_type);
 };
 

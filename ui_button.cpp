@@ -42,7 +42,7 @@ void ui_button::change_state(event_type type)
   state       = prevState;
 }
 
-void ui_button::on_touch(ui_page *page, ui_button *button, touch_event_t event)
+void ui_button::on_touch(ui_obj *active_obj, ui_button *button, touch_event_t event)
 {
   event_type type = event.type;
   if (type <= T_DOWN)
@@ -50,7 +50,7 @@ void ui_button::on_touch(ui_page *page, ui_button *button, touch_event_t event)
     change_state(type);
     
     if(onTouch_fn[type])
-      onTouch_fn[type](page, button, event);
+      onTouch_fn[type](active_obj, button, event);
   }
 }
 

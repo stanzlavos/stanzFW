@@ -16,19 +16,19 @@ void setup_ui(void)
 	setup_settings_page();
 }
 
-touch_event_t prev_event    = {TS_UNDEFINED, TS_UNDEFINED, TS_UNDEFINED, T_UP};
-ui_page       *active_page  = NULL;
+touch_event_t 	prev_event    = {TS_UNDEFINED, TS_UNDEFINED, TS_UNDEFINED, T_UP};
+extern ui_page 	*active_page;
 
 void handle_ui(void)
 {
 	update_statusbar(NULL);
-	if(prev_page_id != next_page_id)
+
+	if(is_page_redraw_needed())
 	{
 		prev_page_id = next_page_id;
-		active_page = get_page(next_page_id);
+		active_page  = get_page(next_page_id);
 		update_statusbar(active_page);
 		active_page->draw();
-
 	}
 
 	touch_event_t t_event = get_touch_event();
@@ -36,6 +36,8 @@ void handle_ui(void)
 	{
 		prev_event = t_event;
 		active_page->handle_touch(active_page, t_event);
+		if(t_event.type == T_UP)
+			active_page->active_obj = NULL;
 	}
 }
 

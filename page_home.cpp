@@ -5,6 +5,7 @@
 #include "page_home.h"
 #include "utils_page.h"
 #include "ui_button.h"
+#include "ui_popup.h"
 
 // Example page touch handler
 void home_touch_handler(ui_page *page, touch_event_t event)
@@ -22,7 +23,7 @@ void home_touch_handler(ui_page *page, touch_event_t event)
     case  ID_HOME_BUTTON :
       {
         ui_button *b = (ui_button *)obj;
-        b->on_touch(page, b, event);
+        b->on_touch(page->active_obj, b, event);
         Serial.print("HOME BUTTON : ");
         if (event.type == T_DOWN)
           Serial.println("DOWN");
@@ -37,7 +38,7 @@ void home_touch_handler(ui_page *page, touch_event_t event)
     case  ID_BACK_BUTTON :
       {
         ui_button *b = (ui_button *)obj;
-        b->on_touch(page, b, event);
+        b->on_touch(page->active_obj, b, event);
         Serial.print("BACK BUTTON : ");
         if (event.type == T_DOWN)
           Serial.println("DOWN");
@@ -64,9 +65,9 @@ void home_touch_handler(ui_page *page, touch_event_t event)
   }
 }
 
-void onSettingsButtonUP(ui_page *page, ui_button *button, touch_event_t event)
+void on_settings_button_up(ui_obj *active_obj, ui_button *button, touch_event_t event)
 {
-  if(page->active_obj == (ui_obj *)button)
+  if(active_obj == (ui_obj *)button)
   {
     launch_next_page(ID_SETTINGS);
   }  
@@ -89,7 +90,7 @@ void setup_home_page(void)
   ui_button *settings_button = new ui_button(0, 0, 0, 0, (ID_SETTINGS_BUTTON));
   settings_button->set_bmp(SETTINGS_UP_BMP, T_UP);
   settings_button->set_bmp(SETTINGS_DOWN_BMP, T_DOWN);
-  settings_button->set_on_touch_handler(T_UP, onSettingsButtonUP);
+  settings_button->set_on_touch_handler(T_UP, on_settings_button_up);
 
   home_page->add_work_area_obj(settings_button);
   //home_page->set_touch_handler(home_touch_handler);

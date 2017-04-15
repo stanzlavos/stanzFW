@@ -6,7 +6,7 @@
 #define STATUSBAR_BLYNK_BMP		"/ui/statusbar/blynk.palette"
 
 // TOOLBAR
-#define DEFAULT_TOOLBAR_BMP   	"/ui/toolbar/toolbar.palette"
+#define DEFAULT_TOOLBAR_BMP   "/ui/toolbar/toolbar.palette"
 #define HOME_UP_BMP         	"/ui/toolbar/homeUP.palette"
 #define HOME_DOWN_BMP       	"/ui/toolbar/homeDOWN.palette"
 #define BACK_UP_BMP         	"/ui/toolbar/backUP.palette"
@@ -15,5 +15,11 @@
 // PAGE HOME
 #define SETTINGS_UP_BMP     	"/ui/page/settingsUP.palette"
 #define SETTINGS_DOWN_BMP   	"/ui/page/settingsDOWN.palette"
+
+// POPUP
+#define OK_UP_BMP				      "/ui/popup/okUP.palette"
+#define OK_DOWN_BMP				    "/ui/popup/okDOWN.palette"
+#define CANCEL_UP_BMP			    "/ui/popup/cancelUP.palette"
+#define CANCEL_DOWN_BMP 		  "/ui/popup/cancelDOWN.palette"
 
 #endif // __UI_RESOURCES__

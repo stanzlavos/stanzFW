@@ -12,6 +12,10 @@ extern uint8_t next_page_id;
 
 ui_page *get_new_page(uint8_t id, char *name, uint8_t flags = 0);
 ui_page *get_page(uint8_t id);
+ui_page *get_active_page(void);
+bool is_page_redraw_needed(void);
+void trigger_page_redraw(void);
+
 void flush_stack(void);
 void launch_page(uint8_t id);
 void launch_next_page(uint8_t id);

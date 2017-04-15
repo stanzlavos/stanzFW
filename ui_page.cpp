@@ -31,6 +31,13 @@ void ui_page::draw_work_area(void)
 
 void ui_page::draw(void)
 {
+  if(popup)
+  {
+	clear_work_area();
+	popup->draw();
+	return;
+  }
+
   toolbar->draw();
 
   draw_work_area();
@@ -214,6 +221,12 @@ ui_obj *ui_page::find_touch(touch_event_t event)
       }
     }
 
+    if(popup)
+    {
+    	obj = popup->find_touch(event);
+    	break;
+    }
+
     if ((obj = toolbar->find_touch(event)) != NULL)
       break;
 
@@ -248,17 +261,17 @@ void ui_page::handle_touch(ui_page *page, touch_event_t event)
     handle_touch_fn(page, event);
 }
 
-void onBackButtonUP(ui_page *page, ui_button *button, touch_event_t event)
+void on_back_button_up(ui_obj *active_obj, ui_button *button, touch_event_t event)
 {
-  if (page->active_obj == (ui_obj *)button)
+  if (active_obj == (ui_obj *)button)
   {
     launch_prev_page();
   }
 }
 
-void onHomeButtonUP(ui_page *page, ui_button *button, touch_event_t event)
+void on_home_button_up(ui_obj *active_obj, ui_button *button, touch_event_t event)
 {
-  if (page->active_obj == (ui_obj *)button)
+  if (active_obj == (ui_obj *)button)
   {
     launch_page(ID_HOME);
   }
@@ -271,7 +284,7 @@ void ui_page::handle_flags(uint8_t flags)
     ui_button *home_button = new ui_button(0, 0, 0, 0, ID_HOME_BUTTON);
     home_button->set_bmp(HOME_UP_BMP, T_UP);
     home_button->set_bmp(HOME_DOWN_BMP, T_DOWN);
-    home_button->set_on_touch_handler(T_UP, onHomeButtonUP);
+    home_button->set_on_touch_handler(T_UP, on_home_button_up);
     add_toolbar_obj(home_button);
   }
 
@@ -280,7 +293,7 @@ void ui_page::handle_flags(uint8_t flags)
     ui_button *back_button = new ui_button(0, 0, 0, 0, ID_BACK_BUTTON);
     back_button->set_bmp(BACK_UP_BMP, T_UP);
     back_button->set_bmp(BACK_DOWN_BMP, T_DOWN);
-    back_button->set_on_touch_handler(T_UP, onBackButtonUP);
+    back_button->set_on_touch_handler(T_UP, on_back_button_up);
     add_toolbar_obj(back_button);
   }
 }
@@ -347,7 +360,7 @@ void default_touch_handler(ui_page *page, touch_event_t event) // Assumes object
 
   ui_button *b = (ui_button *)page->find_touch(event);
   if (b)
-    b->on_touch(page, b, event);
+    b->on_touch(page->active_obj, b, event);
 }
 
 #endif // TFT_IN_USE

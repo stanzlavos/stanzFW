@@ -10,8 +10,9 @@
 #include "utils_debug.h"
 #include "utils_timer.h"
 
-#define BLYNK_CNCT_INTERVAL 		500	// in ms
-#define BLYNK_TRIGGER_INTERVAL		10	// in s
+#define BLYNK_CNCT_INTERVAL 		500		// in ms
+#define BLYNK_TRIGGER_INTERVAL		10		// in s
+#define BLYNK_LONG_PRESS_INTERVAL	3000	// in ms
 
 bool blynk_enabled = false;
 char blynk_auth[CONFIG_PARAM_LEN_MAX] = "\0";
@@ -24,7 +25,7 @@ bool is_blynk_connected(void)
 
 static inline void handle_blynk_setup(void *)
 {
-  setup_blynk();
+	setup_blynk();
 }
 
 void setup_blynk(void)
@@ -33,9 +34,9 @@ void setup_blynk(void)
 	{
 		Blynk.config(blynk_auth);
 
-    if (Blynk.connect(BLYNK_CNCT_INTERVAL) == false)
+		if (Blynk.connect(BLYNK_CNCT_INTERVAL) == false)
 		{
-      //T_PRINTLN("Blynk connect failed")
+			//T_PRINTLN("Blynk connect failed")
 			add_timer(handle_blynk_setup, NULL, BLYNK_TRIGGER_INTERVAL, false);
 		}
 		else
@@ -75,7 +76,7 @@ BLYNK_WRITE(V0)
 	{
 		uint32_t high_time = millis() - switch_time;
 
-		if (high_time > 5000)
+		if (high_time > BLYNK_LONG_PRESS_INTERVAL)
 		{
 			set_op_mode(MODE_OTA);
 			blink_led(5);
@@ -109,7 +110,7 @@ BLYNK_WRITE(V1)
 	{
 		uint32_t high_time = millis() - switch_time;
 
-		if (high_time > 5000)
+		if (high_time > BLYNK_LONG_PRESS_INTERVAL)
 		{
 			set_op_mode(MODE_SPIFFS_OTA);
 			blink_led(5);

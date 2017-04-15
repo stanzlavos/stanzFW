@@ -126,7 +126,7 @@ void tft_get_text_bounds(char *str, int16_t x, int16_t y,
 	*x1 = x;
 	*y1 = y;
 	*w  = tft.textWidth(str);
-	*h  = 8;
+	*h	= tft.fontHeight(1);
 #else  
 	tft.getTextBounds(str, x, y, x1, y1, w, h);
 #endif 

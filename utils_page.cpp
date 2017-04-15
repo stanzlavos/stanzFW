@@ -6,6 +6,7 @@ uint8_t prev_page_id              = UI_MAX_PAGES;
 uint8_t next_page_id              = ID_HOME;
 uint8_t page_stack[UI_MAX_PAGES]  = {0};
 int8_t  stack_top                 = -1;
+ui_page *active_page  			  = NULL;
 
 ui_page *ui_pages[UI_MAX_PAGES];
 
@@ -19,6 +20,21 @@ ui_page *get_new_page(uint8_t id, char *name, uint8_t flags)
 ui_page *get_page(uint8_t id)
 {
   return (ui_pages[id]);
+}
+
+ui_page *get_active_page(void)
+{
+	return active_page;
+}
+
+void trigger_page_redraw(void)
+{
+	prev_page_id = UI_MAX_PAGES;
+}
+
+bool is_page_redraw_needed(void)
+{
+	return (prev_page_id != next_page_id);
 }
 
 bool push_page(uint8_t id)
