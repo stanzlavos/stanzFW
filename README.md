@@ -8,7 +8,7 @@ The intention behind this work is two fold :
 
 The UI logic itself is independent of the hardware. It should work with any other arduino compatible HW I suppose.
 
-Notes :
+## Notes :
 
 * I will be working on this project as and when I get time. :) There are definitely many more activities planned.
 * I will try to add a video showing the capabilities at the earliest.
