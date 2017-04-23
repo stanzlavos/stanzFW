@@ -70,10 +70,11 @@ public :
 	ui_obj* find_touch(touch_event_t event);
 };
 
-void popup_set(char *msg, uint8_t flags);
+void popup_set(char *msg, uint8_t flags = 0);
 void popup_set_on_touch_handler(uint8_t obj_mask, event_type type, on_touch_func_t f);
-void popup_launch(void);
+bool popup_launch(void);
 void popup_destroy(void);
+void popup_set_timer(uint8_t);
 
 #endif // TFT_IN_USE
 

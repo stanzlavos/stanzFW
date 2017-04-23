@@ -69,7 +69,7 @@ void on_settings_button_up(ui_obj *active_obj, ui_button *button, touch_event_t 
 {
   if(active_obj == (ui_obj *)button)
   {
-    launch_next_page(ID_SETTINGS);
+	  launch_next_page(ID_SETTINGS);
   }  
 }
 

@@ -66,7 +66,7 @@ BLYNK_WRITE(V0)
 		return;
 	}
 
-	// If switch was "long pressed" for 5 seconds,
+	// If switch was "long pressed" for 3 seconds,
 	// move the board to OTA mode
 	if (!switch_time)
 	{
@@ -100,7 +100,7 @@ BLYNK_WRITE(V1)
 		return;
 	}
 
-	// If switch was "long pressed" for 5 seconds,
+	// If switch was "long pressed" for 3 seconds,
 	// move the board to SPIFFS OTA mode
 	if (!switch_time)
 	{

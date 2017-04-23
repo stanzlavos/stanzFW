@@ -4,6 +4,7 @@
 
 #include "utils_page.h"
 #include "utils_debug.h"
+#include "utils_timer.h"
 
 void ui_popup::set_msg(char *text)
 {
@@ -166,15 +167,33 @@ void popup_clear(void)
 	popup.text_color   = COLOR_WHITE;
 }
 
-void popup_set_on_touch_handler(uint8_t obj, event_type type, on_touch_func_t f)
+void popup_set_timer(uint8_t timer_val)
 {
-	popup.set_on_touch_handler(obj, type, f);
+	popup.set_timer(timer_val);
 }
 
-void popup_launch(void)
+void popup_set_on_touch_handler(uint8_t obj_mask, event_type type, on_touch_func_t f)
 {
+	popup.set_on_touch_handler(obj_mask, type, f);
+}
+
+static inline void popup_destroy_timer(void *arg)
+{
+  popup_destroy();
+}
+
+bool popup_launch(void)
+{
+  if(!popup.num_obj && !popup.timer_val)
+    return false;
+    
 	get_active_page()->popup = &popup;
 	trigger_page_redraw();
+  
+	if(popup.timer_val)
+		add_timer(popup_destroy_timer, NULL, popup.timer_val, false);
+
+  return true; 
 }
 
 void popup_destroy(void)
