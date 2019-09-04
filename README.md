@@ -14,3 +14,5 @@ The UI logic itself is independent of the hardware. It should work with any othe
 * I will try to add a video showing the capabilities at the earliest.
 * I am not sure how fast I will be able to respond to issues, but I definitely will.
 * You can always support me by making contributions : [Support Me !!!](https://www.paypal.me/stanzlavos)
+
+# Refer Wiki section for details.
